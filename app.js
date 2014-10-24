@@ -9,7 +9,8 @@ var db = require("./models/database");
 
 var routes = require('./routes/index');
 var test = require('./routes/test');
-var postUser = require("./routes/POSTUser");
+var postJoke = require("./routes/POSTJoke");
+var getJoke = require("./routes/GETJoke");
 
 var Users = require("./models/user");
 
@@ -30,7 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/test', test);
-app.use("/user/:username/:email/:pw", postUser);
+app.use("/jokes", getJoke);
+app.use("/user/:username/:email/:pw", postJoke);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
